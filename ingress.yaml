@@ -16,7 +16,7 @@ spec:
     - host: argocd.dineshpabbi.xyz
       http:
         paths:
-          - path: /apple
+          - path: /
             pathType: Prefix
             backend:
               service:
