@@ -1,0 +1,27 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: argocd-app
+  labels:
+    app: apple
+spec:
+  containers:
+    - name: apple-app
+      image: hashicorp/http-echo
+      args:
+        - "-text=apple"
+      resources:
+        limits:
+          cpu: "512m"
+          memory: "256Mi"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: argocd-service
+spec:
+  selector:
+    app: argocd-app
+  ports:
+    - port: 5678
+      targetPort: 5678

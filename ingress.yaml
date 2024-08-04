@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argo-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: "cert-issuer"
+spec:
+  tls:
+    - hosts:
+        - argocd.dineshpabbi.xyz
+      secretName: domain-name-secret
+  rules:
+    - host: argocd.dineshpabbi.xyz
+      http:
+        paths:
+          - path: /apple
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-service
+                port:
+                  number: 5678
