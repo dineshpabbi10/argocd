@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: argocd-app
   labels:
-    app: apple
+    app: argocd-app
 spec:
   containers:
     - name: argocd-app
