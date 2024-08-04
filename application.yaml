@@ -9,7 +9,7 @@ spec:
     - name: argocd-app
       image: hashicorp/http-echo
       args:
-        - "-text=argocd"
+        - "-text=apple"
       resources:
         limits:
           cpu: "512m"
