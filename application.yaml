@@ -12,7 +12,7 @@ spec:
         - "-text=apple"
       resources:
         limits:
-          cpu: "256m"
+          cpu: "512m"
           memory: "256Mi"
 ---
 kind: Service
