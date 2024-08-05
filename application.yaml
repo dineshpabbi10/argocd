@@ -55,3 +55,33 @@ spec:
   ports:
     - port: 5678
       targetPort: 5678
+
+---
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: demo-app
+  labels:
+    app: demo-app
+spec:
+  containers:
+    - name: demo-app
+      image: hashicorp/http-echo
+      args:
+        - "-text=demo"
+      resources:
+        limits:
+          cpu: "100m"
+          memory: "100Mi"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-service
+spec:
+  selector:
+    app: demo-app
+  ports:
+    - port: 5678
+      targetPort: 5678
