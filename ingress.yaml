@@ -16,10 +16,17 @@ spec:
     - host: argocd.dineshpabbi.xyz
       http:
         paths:
-          - path: /
+          - path: /argocd
             pathType: Prefix
             backend:
               service:
                 name: argocd-service
+                port:
+                  number: 5678
+          - path: /apple
+            pathType: Prefix
+            backend:
+              service:
+                name: apple-service
                 port:
                   number: 5678
